@@ -35,7 +35,7 @@ where:
 
 Fan vote shares are defined via a softmax transformation:
 
-$F_{i,t} = \frac{e^{\eta_{i,t}}}{\sum_{j \in \mathcal{A}_t} e^{\eta_{j,t}}}.$
+$$F_{i,t} = \frac{e^{\eta_{i,t}}}{\sum_{j \in \mathcal{A}_t} e^{\eta_{j,t}}}.$$
 
 Eliminations impose inequality constraints:  
 the eliminated contestant must have lower effective support than all others.  
@@ -66,7 +66,9 @@ This reframes voting rules as **mechanisms that can be empirically tested**, rat
 
 To interpret fan behavior, we decompose latent fan utility:
 
-$\eta_{i,t} = \underbrace{\eta^{\text{lin}}_{i,t}}_{\text{performance + time}} + \underbrace{\eta^{\text{ml}}_{i}}_{\text{attributes}}.$
+$$
+\eta_{i,t} = \underbrace{\eta^{\text{lin}}_{i,t}}_{\text{performance + time}} + \underbrace{\eta^{\text{ml}}_{i}}_{\text{attributes}}
+$$
 
 
 - A **linear backbone** explains judge performance and temporal trends.
