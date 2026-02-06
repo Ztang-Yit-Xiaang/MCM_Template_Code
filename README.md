@@ -91,6 +91,7 @@ S_{i,t}
 + \alpha_F(t) F_{i,t}
 + \alpha_M M_{i,t},
 $$
+
 where:
 - \( $\alpha_J(t)$ \) increases over the season,
 - \( $\alpha_F(t)$ \) decreases accordingly,
