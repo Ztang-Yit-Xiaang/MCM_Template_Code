@@ -9,9 +9,9 @@ We reconstruct latent fan preferences, validate existing voting rules, explain f
 
 ## 1. Problem Framing
 
-In each week \( t \), contestants receive:
-- a judge score \( J_{i,t} \),
-- an unobserved fan vote share \( F_{i,t} \),
+In each week \( $t$ \), contestants receive:
+- a judge score \( $J_{i,t}$ \),
+- an unobserved fan vote share \( $F_{i,t}$ \),
 - and typically one contestant is eliminated.
 
 The key difficulty is that **fan votes are never directly observed**.  
@@ -25,22 +25,22 @@ This motivates a **latent-utility modeling approach**.
 ## 2. Latent Fan Model (Problem 1)
 
 We introduce a latent fan utility
-\[
+$$
 \eta_{i,t} = a_{i,s} + \beta_J \tilde{J}_{i,t} + \beta_t t,
-\]
+$$
 where:
-- \( a_{i,s} \) is a season-specific baseline popularity,
-- \( \tilde{J}_{i,t} \) is the standardized judge score,
-- \( t \) captures time effects.
+- \( $a_{i,s}$ \) is a season-specific baseline popularity,
+- \( $\tilde{J}_{i,t}$ \) is the standardized judge score,
+- \( $t$ \) captures time effects.
 
 Fan vote shares are defined via a softmax transformation:
-\[
+$$
 F_{i,t} = \frac{e^{\eta_{i,t}}}{\sum_{j \in \mathcal{A}_t} e^{\eta_{j,t}}}.
-\]
+$$
 
 Eliminations impose inequality constraints:  
 the eliminated contestant must have lower effective support than all others.  
-We estimate \( \eta_{i,t} \) by maximizing a likelihood derived from these constraints.
+We estimate \( $\eta_{i,t}$ \) by maximizing a likelihood derived from these constraints.
 
 **Output:** `fan_shares_estimated.csv`
 
@@ -66,11 +66,11 @@ This reframes voting rules as **mechanisms that can be empirically tested**, rat
 ## 4. Explaining Fan Preferences (Problem 3)
 
 To interpret fan behavior, we decompose latent fan utility:
-\[
+$$
 \eta_{i,t}
 = \underbrace{\eta^{\text{lin}}_{i,t}}_{\text{performance + time}}
 + \underbrace{\eta^{\text{ml}}_{i}}_{\text{attributes}}.
-\]
+$$
 
 - A **linear backbone** explains judge performance and temporal trends.
 - A **GBDT residual model** captures nonlinear effects of:
@@ -85,19 +85,19 @@ This decomposition yields interpretable insights such as baseline popularity by 
 ## 5. Designing a New Elimination System (Problem 4)
 
 We propose **CHER** (Composite Hybrid Elimination Rule), a dynamic elimination system:
-\[
+$$
 S_{i,t}
 = \alpha_J(t) J_{i,t}
 + \alpha_F(t) F_{i,t}
 + \alpha_M M_{i,t},
-\]
+$$
 where:
-- \( \alpha_J(t) \) increases over the season,
-- \( \alpha_F(t) \) decreases accordingly,
-- \( M_{i,t} \) captures fan momentum.
+- \( $\alpha_J(t)$ \) increases over the season,
+- \( $\alpha_F(t)$ \) decreases accordingly,
+- \( $M_{i,t}$ \) captures fan momentum.
 
 ### Elimination Procedure
-1. Select the bottom two contestants by \( S_{i,t} \) (with fairness shields).
+1. Select the bottom two contestants by \( $S_{i,t}$ \) (with fairness shields).
 2. Eliminate the contestant with lower fan support within the bottom two.
 
 CHER achieves:
