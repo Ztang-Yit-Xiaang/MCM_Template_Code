@@ -86,12 +86,7 @@ This decomposition yields interpretable insights such as baseline popularity by 
 
 We propose **CHER** (Composite Hybrid Elimination Rule), a dynamic elimination system:
 
-$$
-S_{i,t}
-= \alpha_J(t) J_{i,t}
-+ \alpha_F(t) F_{i,t}
-+ \alpha_M M_{i,t}.
-$$
+S_{i,t} = α_J(t) J_{i,t} + α_F(t) F_{i,t} + α_M M_{i,t}.
 
 where:
 - \( $\alpha_J(t)$ \) increases over the season,
