@@ -34,9 +34,8 @@ where:
 - \( $t$ \) captures time effects.
 
 Fan vote shares are defined via a softmax transformation:
-$$
-F_{i,t} = \frac{e^{\eta_{i,t}}}{\sum_{j \in \mathcal{A}_t} e^{\eta_{j,t}}}.
-$$
+
+$F_{i,t} = \frac{e^{\eta_{i,t}}}{\sum_{j \in \mathcal{A}_t} e^{\eta_{j,t}}}.$
 
 Eliminations impose inequality constraints:  
 the eliminated contestant must have lower effective support than all others.  
